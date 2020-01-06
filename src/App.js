@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react';
+import _1HelloWorld from "./_ReactsLab/_1HelloWorld";
+import _2AskNameTextBox from "./_ReactsLab/_2AskNameTextBox";
+import _3DropDownListBox from "./_ReactsLab/_3DropDownListBox";
+import _4WebApi from "./_ReactsLab/_4WebApi"; //
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+        <div className="">
+          <h1>Hello World!</h1>
+            <_1HelloWorld />
+
+            <div><_2AskNameTextBox/></div>
+            <br/>
+            <div><_3DropDownListBox/></div>
+
+            <div><_4WebApi/></div>
+
+        </div>
+    );
+  }
 }
 
 export default App;
