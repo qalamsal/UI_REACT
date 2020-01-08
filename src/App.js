@@ -5,20 +5,12 @@ import _2AskNameTextBox from "./_ReactsLab/_2AskNameTextBox";
 import _3DropDownListBox from "./_ReactsLab/_3DropDownListBox";
 import _4WebApi from "./_ReactsLab/_4WebApi"; //
 
-
 class App extends Component {
   render() {
     return (
         <div className="">
-          <h1>Hello World!</h1>
-            <_1HelloWorld />
-
-            <div><_2AskNameTextBox/></div>
-            <br/>
-            <div><_3DropDownListBox/></div>
-
+          <h1>CRUD USING SPRING BOOT API AND REACT</h1>
             <div><_4WebApi/></div>
-
         </div>
     );
   }

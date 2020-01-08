@@ -4,11 +4,6 @@ import { Component } from 'react';
 class _3DropDownListBox extends Component {
 
     //COMPONENT VS PROPS
-
-    //Props= Arbitary inputs (props) received by JS (component) and return React Elemenet
-
-
-
     constructor(props) {
         super(props);
         this.state = {value: 'coconut'};
@@ -30,7 +25,7 @@ class _3DropDownListBox extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Pick your favorite flavor:
-                    <select value={this.state.value} onChange={this.handleChange}>
+                    <select value={this.state.value} onChange={this.handleChange} className="">
                         <option value="grapefruit">Grapefruit</option>
                         <option value="lime">Lime</option>
                         <option value="coconut">Coconut</option>
