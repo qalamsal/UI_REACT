@@ -28,7 +28,7 @@ class WebApi extends Component {
 
     addUser = user => {
         const { groups } = this.state;
-        let request=add;
+        //let request=add;
         //check if form
         fetch('http://localhost:8081/api/v1/employees', {
             method: 'POST',
@@ -55,6 +55,18 @@ class WebApi extends Component {
         this.setState({editUser: u}) //when clicked on edit, will update add valued from here..
        }
 
+    updateUserData = u => {
+        const { groups } = this.state;
+        fetch('http://localhost:8081/api/v1/employees/'+u.id.toString(), {
+            method: 'PUT',
+            body: JSON.stringify(u),
+            headers: {'Content-Type': 'application/json'}
+        }).then( response => {
+            response.json().then(data => this.setState({ groups: groups.map(group => group.id===u.id? u:group), editUser:null }));
+        }).catch(ex => console.log(ex.toString()));
+
+    }
+
     render() {
         const {groups, isLoading, editUser} = this.state;
 
@@ -64,7 +76,7 @@ class WebApi extends Component {
 
         return (
             <div className="WebApi" className="table-responsive">
-                <AddUser addUser={this.addUser} user={editUser} />
+                <AddUser addUser={this.addUser} user={editUser} updateUser={this.updateUserData} />
                 <Student/>
                 <header className="App-header">
                     <Alert dismissible variant="danger">

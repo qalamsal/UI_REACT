@@ -7,7 +7,8 @@ export default class extends React.Component {
             "firstName":"",
             "lastName":"",
             "emailId":""
-        }
+        },
+        "isUpdate": false
     }
 
     constructor(props) {
@@ -18,33 +19,48 @@ export default class extends React.Component {
         const { user } = nextProps;
         if(user)
             this.setState({
-                user: nextProps.user
+                user: nextProps.user,
+                isUpdate: true
             })
+        else
+            this.setState({
+                "user": {
+                    "firstName":"",
+                    "lastName":"",
+                    "emailId":""
+                },
+                "isUpdate": false
+            });
     }
 
     handleSubmit = () => {
-        this.props.addUser(this.state.user);
+        const { isUpdate } = this.state;
+        if(isUpdate)
+            this.props.updateUser(this.state.user)
+        else
+            this.props.addUser(this.state.user);
     }
 
     render() {
+        const { user, isUpdate } = this.state;
         return (
             <form>
                 <label>
-                    First Name: <input type="text" value={this.state.user.firstName} onChange={
-                        data => this.setState({user: {...this.state.user, firstName :data.target.value}})
+                    {"First Name:"} <input type="text" value={user.firstName} onChange={
+                        data => this.setState({user: {...user, firstName :data.target.value}})
                     }/>
                 </label>
                 <label>
-                    Last Name: <input type="text" value={this.state.user.lastName} onChange={
-                    data => this.setState({user: {...this.state.user, lastName :data.target.value}})
+                    Last Name: <input type="text" value={user.lastName} onChange={
+                    data => this.setState({user: {...user, lastName :data.target.value}})
                 }/>
                 </label>
                 <label>
-                    Email Id: <input type="text" value={this.state.user.emailId} onChange={
-                    data => this.setState({user: {...this.state.user, emailId :data.target.value}})
+                    Email Id: <input type="text" value={user.emailId} onChange={
+                    data => this.setState({user: {...user, emailId :data.target.value}})
                 }/>
                 </label>
-                <input type="button" value="Enter" onClick={() => this.handleSubmit()}/>
+                <input type="button" value={isUpdate ? "Update" : "Enter"} onClick={() => this.handleSubmit()}/>
             </form>
         )
     }
