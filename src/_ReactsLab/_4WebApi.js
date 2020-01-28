@@ -8,12 +8,14 @@ import Student from "./StatevsProps";
 class WebApi extends Component {
     state = {
         isLoading: true,
-        groups: []
+        groups: [],
+        isAddDisplayed: false
     };
 
     constructor(props) {
         super(props);
         this.addUser = this.addUser.bind(this);
+        this.showAddUser=this.showAddUser.bind(this);
     }
 
     componentDidMount() {
@@ -55,6 +57,10 @@ class WebApi extends Component {
         this.setState({editUser: u}) //when clicked on edit, will update add valued from here..
        }
 
+       showAddUser=su=>{
+            this.setState({isAddDisplayed:true, editUser:null})
+       }
+
     updateUserData = u => {
         const { groups } = this.state;
         fetch('http://localhost:8081/api/v1/employees/'+u.id.toString(), {
@@ -69,20 +75,24 @@ class WebApi extends Component {
 
     render() {
         const {groups, isLoading, editUser} = this.state;
-
         if (isLoading) {
             return <p>Loading...</p>;
         }
 
         return (
             <div className="WebApi" className="table-responsive">
-                <AddUser addUser={this.addUser} user={editUser} updateUser={this.updateUserData} />
-                <Student/>
+
                 <header className="App-header">
                     <Alert dismissible variant="danger">
-                        <Alert.Heading>React Js</Alert.Heading>
+                        <Alert.Heading>Spring Boot Api and React Js CRUD APP</Alert.Heading>
                     </Alert>
                     <div className="App-intro">
+                        {
+                            //<!--show here  option to add or delete the user Add User component-->
+                            this.state.isAddDisplayed===true?
+                                <AddUser addUser={this.addUser} user={editUser} updateUser={this.updateUserData} /> : this.setState.isAddDisplayed==false
+                        }
+
                         <h2>Employees List</h2>
 
                             <div>
@@ -94,6 +104,9 @@ class WebApi extends Component {
                                         </th>
                                         <th>
                                             Last Name
+                                        </th>
+                                        <th>
+                                            <button className={"button muted-button"} onClick={()=>this.showAddUser()}>ADD</button>
                                         </th>
                                     </tr>
                                     </thead>

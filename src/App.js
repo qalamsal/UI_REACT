@@ -8,10 +8,9 @@ import _4WebApi from "./_ReactsLab/_4WebApi"; //
 class App extends Component {
   render() {
     return (
-        <div className="">
-          <h1>CRUD USING SPRING BOOT API AND REACT</h1>
-            <div><_4WebApi/></div>
-        </div>
+            <div>
+                <_4WebApi/>
+            </div>
     );
   }
 }
