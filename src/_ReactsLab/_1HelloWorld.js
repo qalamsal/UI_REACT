@@ -11,10 +11,6 @@ class _1HelloWorld extends Component {
     ------------------
     Component = Class or function  (holding the Ui, data, function)
 
-
-
-
-
      */
 
     render() {

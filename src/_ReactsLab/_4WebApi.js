@@ -77,7 +77,7 @@ class WebApi extends Component {
         const {groups, isLoading, editUser} = this.state;
         if (isLoading) {
             return <p>Loading...</p>;
-        }
+                         }
 
         return (
             <div className="WebApi" className="table-responsive">
